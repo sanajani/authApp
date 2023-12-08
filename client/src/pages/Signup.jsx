@@ -1,12 +1,13 @@
 // import React from 'react'
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link,useNavigate } from "react-router-dom"
 import axios from 'axios'
 
 const Signup = () => {
   const [formData,setFormData] = useState({})
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({...formData, [e.target.id]: e.target.value})
@@ -23,6 +24,7 @@ const Signup = () => {
       console.log(data);
       setLoading(false)
       setError(null)
+      navigate('/signin')
     } catch (error) {
       console.log(error.response.data.message);
       setLoading(false)
