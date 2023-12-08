@@ -14,13 +14,21 @@ const app = express();
 app.use(express.json())
 const PORT = process.env.PORT || 9011
 
+app.listen(PORT,() => {
+    console.log(`server is running on http://localhost:${PORT}`);
+})
 
 // routes used in the application
 app.use('/api/user',userRouter)
 app.use('/api/auth',authRouter)
 
-app.listen(PORT,() => {
-    console.log(`server is running on http://localhost:${PORT}`);
+app.use((err,req,res,next) => {
+    const statusCode = err.statusCode || 500
+    const message = err.message || "Internal Server Error"
+    return res.status(statusCode).json({
+        success:false,
+        message,
+        statusCode
+        
+    })
 })
-
-
