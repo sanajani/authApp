@@ -8,7 +8,8 @@ const Header = () => {
             <ul className="flex gap-4 font-medium">
                 <li><Link to='/'>Home</Link></li>
                 <li><Link to='/about'>About</Link></li>
-                <li><Link to='/signin'>Signin</Link></li>
+                <li><Link to='/signin'>SignIn</Link></li>
+                <li><Link to='/signup'>SignUp</Link></li>
                 {/* <li>Home</li> */}
             </ul>
         </div>
